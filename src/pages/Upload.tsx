@@ -5,7 +5,6 @@ import { Navbar } from "@/components/Navbar";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Textarea } from "@/components/ui/textarea";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { useToast } from "@/hooks/use-toast";
@@ -13,9 +12,7 @@ import { Upload as UploadIcon } from "lucide-react";
 import { z } from "zod";
 
 const uploadSchema = z.object({
-  title: z.string().min(3, "Title must be at least 3 characters").max(200, "Title too long"),
   subject: z.string().min(2, "Subject is required").max(100, "Subject too long"),
-  description: z.string().max(500, "Description too long").optional(),
   year: z.string().optional(),
   semester: z.string().optional(),
   materialType: z.enum(["pyq", "notes"]),
@@ -25,8 +22,6 @@ export default function Upload() {
   const [user, setUser] = useState<any>(null);
   const [isAdmin, setIsAdmin] = useState(false);
   const [loading, setLoading] = useState(false);
-  const [title, setTitle] = useState("");
-  const [description, setDescription] = useState("");
   const [subject, setSubject] = useState("");
   const [year, setYear] = useState("");
   const [semester, setSemester] = useState("");
@@ -90,8 +85,6 @@ export default function Upload() {
       if (error) throw error;
 
       if (data) {
-        setTitle(data.title);
-        setDescription(data.description || "");
         setSubject(data.subject);
         setYear(data.year || "");
         setSemester(data.semester || "");
@@ -124,9 +117,7 @@ export default function Upload() {
 
     try {
       const validatedData = uploadSchema.parse({
-        title,
         subject,
-        description,
         year,
         semester,
         materialType,
@@ -156,8 +147,6 @@ export default function Upload() {
       }
 
       const materialData = {
-        title: validatedData.title,
-        description: validatedData.description,
         subject: validatedData.subject,
         year: validatedData.year,
         semester: validatedData.semester,
@@ -189,6 +178,7 @@ export default function Upload() {
         // Create new material
         const { error: dbError } = await supabase.from("materials").insert({
           ...materialData,
+          title: fileName.replace(/\.[^/.]+$/, ""),
           file_path: filePath,
           file_name: fileName,
           file_size: fileSize,
@@ -203,8 +193,6 @@ export default function Upload() {
         });
 
         // Reset form
-        setTitle("");
-        setDescription("");
         setSubject("");
         setYear("");
         setSemester("");
@@ -262,17 +250,6 @@ export default function Upload() {
             <CardContent>
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div className="space-y-2">
-                  <Label htmlFor="title">Title *</Label>
-                  <Input
-                    id="title"
-                    placeholder="e.g., Data Structures Mid-Term 2023"
-                    value={title}
-                    onChange={(e) => setTitle(e.target.value)}
-                    required
-                  />
-                </div>
-
-                <div className="space-y-2">
                   <Label htmlFor="subject">Subject *</Label>
                   <Input
                     id="subject"
@@ -280,17 +257,6 @@ export default function Upload() {
                     value={subject}
                     onChange={(e) => setSubject(e.target.value)}
                     required
-                  />
-                </div>
-
-                <div className="space-y-2">
-                  <Label htmlFor="description">Description</Label>
-                  <Textarea
-                    id="description"
-                    placeholder="Brief description of the material..."
-                    value={description}
-                    onChange={(e) => setDescription(e.target.value)}
-                    rows={3}
                   />
                 </div>
 
