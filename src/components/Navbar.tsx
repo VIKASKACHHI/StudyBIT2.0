@@ -23,7 +23,7 @@ export const Navbar = ({ user, isAdmin, isSuperAdmin }: NavbarProps) => {
   const handleLogout = async () => {
     await supabase.auth.signOut();
     toast({ title: "Logged out successfully" });
-    navigate("/auth");
+    navigate("/");
   };
 
   return (
