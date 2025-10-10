@@ -38,20 +38,14 @@ export default function Upload() {
   useEffect(() => {
     const { data: { subscription } } = supabase.auth.onAuthStateChange((event, session) => {
       setUser(session?.user ?? null);
-      if (!session?.user) {
-        navigate("/auth");
-      }
     });
 
     supabase.auth.getSession().then(({ data: { session } }) => {
       setUser(session?.user ?? null);
-      if (!session?.user) {
-        navigate("/auth");
-      }
     });
 
     return () => subscription.unsubscribe();
-  }, [navigate]);
+  }, []);
 
   useEffect(() => {
     if (user) {
@@ -132,7 +126,8 @@ export default function Upload() {
       // Upload new file if provided
       if (file) {
         const fileExt = file.name.split(".").pop();
-        filePath = `${user.id}/${Date.now()}.${fileExt}`;
+        const userId = user?.id || "anonymous";
+        filePath = `${userId}/${Date.now()}.${fileExt}`;
 
         const { error: uploadError } = await supabase.storage
           .from("materials")
@@ -182,7 +177,7 @@ export default function Upload() {
           file_path: filePath,
           file_name: fileName,
           file_size: fileSize,
-          uploaded_by: user.id,
+          uploaded_by: user?.id || null,
         });
 
         if (dbError) throw dbError;
@@ -242,9 +237,9 @@ export default function Upload() {
             <CardHeader>
               <CardTitle className="text-2xl">{editId ? "Edit Material" : "Upload Material"}</CardTitle>
               <CardDescription>
-                {editId 
+                {editId
                   ? "Update the material information and optionally replace the file."
-                  : "Share your PYQs and notes with fellow students. All uploads require admin approval."}
+                  : "Share your PYQs and notes anonymously with fellow students. All uploads require admin approval."}
               </CardDescription>
             </CardHeader>
             <CardContent>

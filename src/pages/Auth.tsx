@@ -20,8 +20,6 @@ export default function Auth() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [fullName, setFullName] = useState("");
-  const [newPassword, setNewPassword] = useState("");
-  const [showResetPassword, setShowResetPassword] = useState(false);
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
   const { toast } = useToast();
@@ -119,75 +117,6 @@ export default function Auth() {
     }
   };
 
-  const handleResetPassword = async () => {
-    if (!email || !newPassword) {
-      toast({
-        title: "Required fields missing",
-        description: "Please enter your email and new password",
-        variant: "destructive",
-      });
-      return;
-    }
-
-    if (newPassword.length < 6) {
-      toast({
-        title: "Invalid password",
-        description: "Password must be at least 6 characters",
-        variant: "destructive",
-      });
-      return;
-    }
-
-    try {
-      setLoading(true);
-      
-      // First verify the user exists by attempting to sign in with a dummy check
-      const { data: userData, error: userError } = await supabase.auth.signInWithPassword({
-        email: email,
-        password: "dummy_check_123456", // This will fail but confirms user exists
-      });
-
-      // If user doesn't exist, the error will be "Invalid login credentials"
-      // We'll use the admin API approach through an edge function or direct update
-      
-      // Since we can't directly update passwords without authentication,
-      // we need to use Supabase's admin API. For now, we'll sign in first
-      // and then update the password
-      
-      // Alternative approach: Update password for the authenticated user
-      const { error: updateError } = await supabase.auth.updateUser({
-        password: newPassword
-      });
-
-      if (updateError) {
-        // If not authenticated, we need a different approach
-        toast({
-          title: "Reset failed",
-          description: "Please sign in first to reset your password",
-          variant: "destructive",
-        });
-        return;
-      }
-
-      toast({
-        title: "Password reset successful!",
-        description: "Please sign in with your new password",
-      });
-      
-      setShowResetPassword(false);
-      setNewPassword("");
-      setPassword("");
-      
-    } catch (error: any) {
-      toast({
-        title: "Reset failed",
-        description: error.message,
-        variant: "destructive",
-      });
-    } finally {
-      setLoading(false);
-    }
-  };
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-primary/10 via-background to-accent/10 p-4">
@@ -211,88 +140,32 @@ export default function Auth() {
             </TabsList>
             
             <TabsContent value="signin">
-              {!showResetPassword ? (
-                <form onSubmit={handleSignIn} className="space-y-4">
-                  <div className="space-y-2">
-                    <Label htmlFor="signin-email">Email</Label>
-                    <Input
-                      id="signin-email"
-                      type="email"
-                      placeholder="your@email.com"
-                      value={email}
-                      onChange={(e) => setEmail(e.target.value)}
-                      required
-                    />
-                  </div>
-                  <div className="space-y-2">
-                    <Label htmlFor="signin-password">Password</Label>
-                    <Input
-                      id="signin-password"
-                      type="password"
-                      value={password}
-                      onChange={(e) => setPassword(e.target.value)}
-                      required
-                    />
-                  </div>
-                  <Button type="submit" className="w-full" disabled={loading}>
-                    {loading ? "Signing in..." : "Sign In"}
-                  </Button>
-                  <Button
-                    type="button"
-                    variant="link"
-                    onClick={() => setShowResetPassword(true)}
-                    disabled={loading}
-                    className="w-full"
-                  >
-                    Forgot Password?
-                  </Button>
-                </form>
-              ) : (
-                <div className="space-y-4">
-                  <div className="space-y-2">
-                    <Label htmlFor="reset-email">Email</Label>
-                    <Input
-                      id="reset-email"
-                      type="email"
-                      placeholder="your@email.com"
-                      value={email}
-                      onChange={(e) => setEmail(e.target.value)}
-                      required
-                    />
-                  </div>
-                  <div className="space-y-2">
-                    <Label htmlFor="new-password">Enter New Password</Label>
-                    <Input
-                      id="new-password"
-                      type="password"
-                      placeholder="New password (min 6 characters)"
-                      value={newPassword}
-                      onChange={(e) => setNewPassword(e.target.value)}
-                      required
-                    />
-                  </div>
-                  <Button 
-                    type="button" 
-                    onClick={handleResetPassword} 
-                    className="w-full" 
-                    disabled={loading}
-                  >
-                    {loading ? "Resetting..." : "Reset Password"}
-                  </Button>
-                  <Button
-                    type="button"
-                    variant="link"
-                    onClick={() => {
-                      setShowResetPassword(false);
-                      setNewPassword("");
-                    }}
-                    disabled={loading}
-                    className="w-full"
-                  >
-                    Back to Sign In
-                  </Button>
+              <form onSubmit={handleSignIn} className="space-y-4">
+                <div className="space-y-2">
+                  <Label htmlFor="signin-email">Email</Label>
+                  <Input
+                    id="signin-email"
+                    type="email"
+                    placeholder="your@email.com"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    required
+                  />
                 </div>
-              )}
+                <div className="space-y-2">
+                  <Label htmlFor="signin-password">Password</Label>
+                  <Input
+                    id="signin-password"
+                    type="password"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    required
+                  />
+                </div>
+                <Button type="submit" className="w-full" disabled={loading}>
+                  {loading ? "Signing in..." : "Sign In"}
+                </Button>
+              </form>
             </TabsContent>
 
             <TabsContent value="signup">

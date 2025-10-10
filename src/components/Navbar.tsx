@@ -39,14 +39,14 @@ export const Navbar = ({ user, isAdmin, isSuperAdmin }: NavbarProps) => {
         </Link>
 
         <div className="flex items-center gap-4">
+          <Link to="/browse">
+            <Button variant="ghost">Browse</Button>
+          </Link>
+          <Link to="/upload">
+            <Button variant="ghost">Upload</Button>
+          </Link>
           {user ? (
             <>
-              <Link to="/browse">
-                <Button variant="ghost">Browse</Button>
-              </Link>
-              <Link to="/upload">
-                <Button variant="ghost">Upload</Button>
-              </Link>
               {isAdmin && (
                 <Link to="/admin">
                   <Button variant="ghost">Admin</Button>

@@ -59,23 +59,20 @@ const Index = () => {
                 Share and access previous year questions and notes. Built by students, for students.
               </p>
               <div className="flex flex-wrap gap-4">
-                {user ? (
-                  <>
-                    <Link to="/browse">
-                      <Button size="lg" className="shadow-lg hover:shadow-xl transition-all">
-                        Browse Materials
-                      </Button>
-                    </Link>
-                    <Link to="/upload">
-                      <Button size="lg" variant="outline">
-                        Upload
-                      </Button>
-                    </Link>
-                  </>
-                ) : (
+                <Link to="/browse">
+                  <Button size="lg" className="shadow-lg hover:shadow-xl transition-all">
+                    Browse Materials
+                  </Button>
+                </Link>
+                <Link to="/upload">
+                  <Button size="lg" variant="outline">
+                    Upload
+                  </Button>
+                </Link>
+                {!user && (
                   <Link to="/auth">
-                    <Button size="lg" className="shadow-lg hover:shadow-xl transition-all">
-                      Get Started
+                    <Button size="lg" variant="secondary">
+                      Sign In
                     </Button>
                   </Link>
                 )}
@@ -106,7 +103,7 @@ const Index = () => {
               </div>
               <h3 className="text-xl font-semibold mb-2">Upload Materials</h3>
               <p className="text-muted-foreground">
-                Share your PYQs and notes with the community. Help fellow students succeed.
+                Share your PYQs and notes anonymously with the community. Help fellow students succeed.
               </p>
             </div>
 
