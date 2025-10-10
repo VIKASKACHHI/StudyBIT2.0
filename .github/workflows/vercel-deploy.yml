@@ -1,0 +1,17 @@
+name: Trigger Vercel Deploy Hook
+on:
+  push:
+    branches: [ main ]    # change branch if needed
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Call Vercel Deploy Hook
+        env:
+          HOOK: ${{ secrets.VERCEL_DEPLOY_HOOK }}
+        run: |
+          if [ -z "$HOOK" ]; then
+            echo "VERCEL_DEPLOY_HOOK not set"; exit 1;
+          fi
+          curl -X POST "$HOOK"
