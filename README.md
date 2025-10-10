@@ -1,4 +1,4 @@
-# Welcome to your Lovable project
+# Welcome to your Bit PYQ and notes plateform project
 
 ## Project info
 
