@@ -6,8 +6,6 @@
 
 There are several ways of editing your application.
 
-**Use Lovable**
-
 
 **Use your preferred IDE**
 
