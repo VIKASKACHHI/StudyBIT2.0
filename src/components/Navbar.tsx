@@ -34,7 +34,7 @@ export const Navbar = ({ user, isAdmin, isSuperAdmin }: NavbarProps) => {
             <BookOpen className="h-6 w-6 text-primary-foreground" />
           </div>
           <span className="text-xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
-            StudyHub
+            StudyBIT
           </span>
         </Link>
 

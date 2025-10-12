@@ -50,7 +50,7 @@ const Index = () => {
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div className="space-y-6">
               <h1 className="text-4xl md:text-6xl font-bold leading-tight">
-                Your College{" "}
+                Your College's{" "}
                 <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
                   Study Hub
                 </span>
@@ -82,7 +82,7 @@ const Index = () => {
               <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-accent/20 rounded-2xl blur-3xl" />
               <img
                 src={heroImage}
-                alt="StudyHub - College study materials platform"
+                alt="StudyBIT - College study materials platform"
                 className="relative rounded-2xl shadow-2xl"
               />
             </div>
