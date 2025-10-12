@@ -27,7 +27,7 @@ export const Navbar = ({ user, isAdmin, isSuperAdmin }: NavbarProps) => {
   };
 
   return (
-    <nav className="border-b bg-card sticky top-0 z-50 backdrop-blur-sm bg-card/90">
+    <nav className="border-b bg-card sticky top-0 z-50 backdrop-blur-sm">
       <div className="container mx-auto px-4 py-4 flex items-center justify-between">
         <Link to="/" className="flex items-center gap-2 group">
           <div className="p-2 rounded-lg bg-gradient-to-br from-primary to-accent group-hover:shadow-lg transition-all">
