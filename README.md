@@ -73,5 +73,15 @@ Notes for other hosts:
 - GitHub Pages: create a `404.html` in `public/` (already added) so GitHub Pages will serve it for unknown paths and redirect to `/`.
 - Nginx / Apache: configure a rewrite rule to forward all requests to `index.html` (history API fallback). For example, Nginx `try_files $uri /index.html;`.
 
+Preview image (Open Graph / Twitter)
+
+To show a rich link preview when sharing the site, place a preview image at `public/preview.png`. The app's `index.html` already includes Open Graph and Twitter meta tags that point to `/preview.png`.
+
+Test link previews:
+
+- Facebook Sharing Debugger: https://developers.facebook.com/tools/debug/
+- Twitter Card Validator: https://cards-dev.twitter.com/validator
+
+
 
 
