@@ -6,6 +6,7 @@ import { Input } from "@/components/ui/input";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Search } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
+import { Footer } from "@/components/Footer";
 
 export default function Browse() {
   const [user, setUser] = useState<any>(null);
@@ -122,7 +123,8 @@ export default function Browse() {
   };
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background flex flex-col min-h-screen">
+      <main className="flex-grow">
       <Navbar user={user} isAdmin={isAdmin} />
       
       <main className="container mx-auto px-4 py-8">
@@ -218,6 +220,9 @@ export default function Browse() {
           )}
         </div>
       </main>
+      </main>
+      <Footer />
+      
     </div>
   );
 }
