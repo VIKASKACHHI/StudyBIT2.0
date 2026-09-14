@@ -137,7 +137,7 @@ export default function Browse() {
               </h2>
 
               <p className="text-sm text-muted-foreground">
-                Useful products for college and study
+                Useful products for you guys
               </p>
             </div>
 
@@ -152,6 +152,16 @@ export default function Browse() {
                 name: "Cetaphil Gentle Skin Hydrating Face Wash 118ml, Paraben Free, Sulphate-Free Gentle Skin Hydrating Cleanser with Niacinamide, Vitamin B5 for Dry to Normal, Sensitive Skin",
                 image: "https://res.cloudinary.com/taaoifuy/image/upload/f_auto,q_auto/Citaphil",
                 link: "https://link.amazon/B0br880Sp",
+              },
+              {
+                name: "Milton Rapid Electric Kettle 1.8L | 1500 Watts | Stainless Steel Hot Water portable Electric Kettle for Home, Office | Auto Shut-Off with Wide Mouth | Cool-touch Handle and Single-Touch Lid Lock",
+                image: "https://res.cloudinary.com/taaoifuy/image/upload/v1789400373/Kettle.jpg",
+                link: "https://link.amazon/B08jLd6Zc",
+              },
+              {
+                name: "Portronics Conch Theta C in Ear Type C Wired Earphones with in Line HD Mic, Powerful Audio, 14.2mm Driver, Unique Earbuds Design, TPE Anti Tangle Wire, in line Controls, Wide Compatibility(White)",
+                image: "https://res.cloudinary.com/taaoifuy/image/upload/v1789400650/PortronicsEarphone.jpg",
+                link: "https://link.amazon/B01hxNYJX",
               }
             ].map((product) => (
               <a
