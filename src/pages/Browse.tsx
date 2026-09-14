@@ -162,6 +162,11 @@ export default function Browse() {
                 name: "Portronics Conch Theta C in Ear Type C Wired Earphones with in Line HD Mic, Powerful Audio, 14.2mm Driver, Unique Earbuds Design, TPE Anti Tangle Wire, in line Controls, Wide Compatibility(White)",
                 image: "https://res.cloudinary.com/taaoifuy/image/upload/v1789400650/PortronicsEarphone.jpg",
                 link: "https://link.amazon/B01hxNYJX",
+              },
+              {
+                name: "OnePlus Nord Buds 3r TWS Earbuds up to 54 Hours Playback, 2-mic Clear Calls, 3D Spatial Audio, AI Translation, 12.4mm Drivers, Dual-Device Connectivity, 47ms Low Latency - Ash Black",
+                image: "https://res.cloudinary.com/taaoifuy/image/upload/v1789400916/OnePlusBuds.jpg",
+                link: "https://link.amazon/B02Y2LiGN",
               }
             ].map((product) => (
               <a
