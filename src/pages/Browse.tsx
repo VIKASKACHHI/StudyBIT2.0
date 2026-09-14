@@ -134,6 +134,9 @@ export default function Browse() {
             <p className="text-muted-foreground">
               Explore previous year questions and notes shared by students
             </p>
+            <div className="mt-3 text-red-600 font-semibold animate-pulse">
+              ⚠️ PYQs of ETC, ECS, and CST are under the ECE branch section.
+            </div>
           </div>
 
           <div className="space-y-4">
