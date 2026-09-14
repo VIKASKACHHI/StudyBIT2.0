@@ -123,11 +123,68 @@ export default function Browse() {
   };
 
   return (
-    <div className="min-h-screen bg-background flex flex-col min-h-screen">
-      <main className="flex-grow">
-      <Navbar user={user} isAdmin={isAdmin} />
-      
-      <main className="container mx-auto px-4 py-8">
+  <div className="min-h-screen bg-background flex flex-col">
+    <Navbar user={user} isAdmin={isAdmin} />
+
+    <main className="container mx-auto px-4 py-8 flex-grow">
+
+        {/* Affiliate Products */}
+        <div className="mb-8">
+          <div className="flex items-center justify-between mb-3">
+            <div>
+              <h2 className="text-xl font-bold">
+                Recommended for Students
+              </h2>
+
+              <p className="text-sm text-muted-foreground">
+                Useful products for college and study
+              </p>
+            </div>
+
+            <span className="text-xs text-muted-foreground">
+              Affiliate links
+            </span>
+          </div>
+
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+            {[
+              {
+                name: "Cetaphil Gentle Skin Hydrating Face Wash 118ml, Paraben Free, Sulphate-Free Gentle Skin Hydrating Cleanser with Niacinamide, Vitamin B5 for Dry to Normal, Sensitive Skin",
+                image: "https://res.cloudinary.com/taaoifuy/image/upload/f_auto,q_auto/Citaphil",
+                link: "https://link.amazon/B0br880Sp",
+              }
+            ].map((product) => (
+              <a
+                key={product.name}
+                href={product.link}
+                target="_blank"
+                rel="noopener noreferrer sponsored"
+                className="group rounded-xl border bg-card p-3 hover:shadow-md transition-shadow"
+              >
+                <div className="aspect-square rounded-lg bg-white flex items-center justify-center overflow-hidden">
+                  <img
+                    src={product.image}
+                    alt={product.name}
+                    className="w-full h-full object-contain group-hover:scale-105 transition-transform"
+                  />
+                </div>
+
+                <h3 className="mt-3 text-sm font-semibold line-clamp-2">
+                  {product.name}
+                </h3>
+
+                <p className="mt-1 text-xs text-primary">
+                  View Product →
+                </p>
+              </a>
+            ))}
+          </div>
+
+          <p className="mt-2 text-[11px] text-muted-foreground">
+            Some links may be affiliate links. We may earn a small commission
+            if you purchase through them, at no additional cost to you.
+          </p>
+        </div>
         <div className="space-y-6">
           <div>
             <h1 className="text-3xl font-bold mb-2">Browse Materials</h1>
@@ -222,7 +279,6 @@ export default function Browse() {
             <FolderView materials={filteredMaterials} />
           )}
         </div>
-      </main>
       </main>
       <Footer />
       
