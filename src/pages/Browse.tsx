@@ -154,9 +154,9 @@ export default function Browse() {
                 link: "https://link.amazon/B0br880Sp",
               },
               {
-                name: "Milton Rapid Electric Kettle 1.8L | 1500 Watts | Stainless Steel Hot Water portable Electric Kettle for Home, Office | Auto Shut-Off with Wide Mouth | Cool-touch Handle and Single-Touch Lid Lock",
-                image: "https://res.cloudinary.com/taaoifuy/image/upload/v1789400373/Kettle.jpg",
-                link: "https://link.amazon/B08jLd6Zc",
+                name: "GM 3060 Extension Board 10Amp Output 250 Volts | 2 Mtr Extension Cord | Master Switch, Safety Shutter, 4 International Sockets | 1 Year Brand Warranty | Multi Plug Travel Adapter for Home Appliances",
+                image: "https://res.cloudinary.com/taaoifuy/image/upload/v1790218312/Extension.jpg",
+                link: "https://link.amazon/B09SU7VbI",
               },
               {
                 name: "HUG 'n' FEEL SOFT TOYS Unicorn, Soft Toy, Baby Toys, Kids Toy, Soft Toy, Toy for Girl, Birthday Gift for Girl Boys, Toy for Girls, Kids Toys for Boys Girl, Toys Plush Items, (30cm, Pink)",
