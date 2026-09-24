@@ -149,9 +149,9 @@ export default function Browse() {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             {[
               {
-                name: "Cetaphil Gentle Skin Hydrating Face Wash 118ml, Paraben Free, Sulphate-Free Gentle Skin Hydrating Cleanser with Niacinamide, Vitamin B5 for Dry to Normal, Sensitive Skin",
-                image: "https://res.cloudinary.com/taaoifuy/image/upload/f_auto,q_auto/Citaphil",
-                link: "https://link.amazon/B0br880Sp",
+                name: "Dyazo 6 Angles Adjustable Aluminum Ergonomic Foldable Portable Tabletop Laptop/Desktop Riser Stand Holder Compatible for MacBook, HP, Dell, Lenovo & All Other Notebook (Silver)",
+                image: "https://res.cloudinary.com/taaoifuy/image/upload/v1790218967/laptop_stand.jpg",
+                link: "https://link.amazon/B0gU1yB06",
               },
               {
                 name: "GM 3060 Extension Board 10Amp Output 250 Volts | 2 Mtr Extension Cord | Master Switch, Safety Shutter, 4 International Sockets | 1 Year Brand Warranty | Multi Plug Travel Adapter for Home Appliances",
